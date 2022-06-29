@@ -80,7 +80,8 @@
 						"name": "status",
 						"in": "query",
 						"type": "string",
-						"required": false
+						"required": false,
+						"enum": ["Approved", "Rejected", "Submitted", "Pending"]
 					}
 				],
 				"responses": {}

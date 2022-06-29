@@ -54,7 +54,8 @@
               "name": "userType",
               "in": "query",
               "type": "string",
-              "required": false
+              "required": false,
+							"enum":["Author", "Editor"]
             }
           ],
           "responses": {}
