@@ -1,1 +1,90 @@
-{}
+{
+	"tags": {
+		"name": "Articles",
+		"description": "List of APIS for Articles"
+	},
+	"paths": {
+		"/v1/articles": {
+			"post": {
+				"x-swagger-router-controller": "Articles",
+				"operationId": "create-Articles",
+				"tags": ["Articles"],
+				"description": "create Article API",
+				"parameters": [
+					{
+						"in": "body",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"title": {
+									"type": "string",
+									"required": true
+								},
+								"body": {
+									"type": "string",
+									"required": true
+								},
+								"keywords": {
+									"type": "string",
+									"required": true
+								},
+								"status": {
+									"type": "string",
+									"required": true,
+									"enum":["Author", "Editor"]
+								},
+								"createdBy": {
+									"type": "string",
+									"description": "Id of author",
+									"required": true
+								},
+								"approvedBy": {
+									"type": "string",
+									"description": "Id of editor",
+									"required": true
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+
+		"/v1/Articles/getarticle": {
+			"get": {
+				"x-swagger-router-controller": "Articles",
+				"operationId": "get-Articles",
+				"tags": ["Articles"],
+				"description": "Get Articles API",
+				"parameters": [
+					{
+						"name": "articleId",
+						"in": "query",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "createdBy",
+						"in": "query",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "approvedBy",
+						"in": "query",
+						"type": "string",
+						"required": false
+					},
+					{
+						"name": "status",
+						"in": "query",
+						"type": "string",
+						"required": false
+					}
+				],
+				"responses": {}
+			}
+		}
+	}
+}
