@@ -7,9 +7,6 @@ app.use(express.json())
 // Swagger setup
 require('./swagger/swagger.js')(app);
 
-//Response Handler
-global.responseHandler = require('./config/responseHandler');
-
 // router 
 const user = require("./router/userRouter")
 const article = require("./router/articleRouter")

@@ -4,14 +4,15 @@
       "description": "List of APIS for users"
     },
     "paths": {
-      "/v1/users": {
+      "/v1/User": {
         "post": {
-          "x-swagger-router-controller": "user",
+          "x-swagger-router-controller": "Users",
           "operationId": "create-user",
           "tags": ["Users"],
           "description": "create User API",
           "parameters": [
             {
+              "name": "userObject",
 							"in": "body",
 							"schema": {
 								"type": "object",
@@ -34,28 +35,30 @@
             }
           ],
           "responses": {}
+        },
+        "get": {
+          "x-swagger-router-controller": "Users",
+          "operationId": "get-all-users",
+          "tags": ["Users"],
+          "description": "Get All Users API",
+          "parameters": [
+          ],
+          "responses": {}
         }
       },
   
-      "/v1/users/getUser": {
+      "/v1/User/{id}": {
         "get": {
-          "x-swagger-router-controller": "user",
-          "operationId": "get-user",
+          "x-swagger-router-controller": "Users",
+          "operationId": "get-user-by-id",
           "tags": ["Users"],
-          "description": "Get User API",
+          "description": "Get User By Id API",
           "parameters": [
             {
-              "name": "userId",
-              "in": "query",
+              "name": "id",
+              "in": "path",
               "type": "string",
               "required": false
-            },
-            {
-              "name": "userType",
-              "in": "query",
-              "type": "string",
-              "required": false,
-							"enum":["Author", "Editor"]
             }
           ],
           "responses": {}

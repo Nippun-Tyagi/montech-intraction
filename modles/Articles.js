@@ -22,6 +22,10 @@ const articlesSchemas = new mongoose.Schema(
       ref: "users",
       required: true,
     },
+    updatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
     approvedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",

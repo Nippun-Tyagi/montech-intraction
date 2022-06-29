@@ -26,7 +26,7 @@ exports.getUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports. getAllUser = catchAsyncError(async (req, res, next) => {
+exports.getAllUser = catchAsyncError(async (req, res, next) => {
   const allUser = await User.find();
   return res.status(200).json({
     success: true,

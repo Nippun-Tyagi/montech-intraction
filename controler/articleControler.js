@@ -43,14 +43,15 @@ exports.updateArtical = catchAsyncError(async (req, res, next) => {
         body: req.body.body,
         keywords: req.body.keywords,
         updatedBy: req.body.updatedBy,
-        articalId:req.body.articalId
+        status: req.body.status
     }
     const getUserDetails = await User.findById(req.body.updatedBy);
+    const article = await Articals.findById(req.params.id);
     if (!getUserDetails) {
         return next(new ErrorHandler(`User is not found on this particular id ${req.body.updatedBy}`))
     }
-    if(getUserDetails.type==="Editor"){
-        const updatedArticals = await Articals.findByIdAndUpdate(req.body.articalId, newArticalData, {
+    if(getUserDetails.type === "Editor" || (article.createdBy.toString() === req.body.updatedBy)){
+        const updatedArticals = await Articals.findByIdAndUpdate(req.params.id, newArticalData, {
             new: true,
             runValidators: true,
             useFindAndModify: false

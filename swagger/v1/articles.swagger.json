@@ -4,7 +4,7 @@
 		"description": "List of APIS for Articles"
 	},
 	"paths": {
-		"/v1/articles": {
+		"/v1/createArtical": {
 			"post": {
 				"x-swagger-router-controller": "Articles",
 				"operationId": "create-Articles",
@@ -12,6 +12,7 @@
 				"description": "create Article API",
 				"parameters": [
 					{
+						"name": "articleObject",
 						"in": "body",
 						"schema": {
 							"type": "object",
@@ -21,26 +22,18 @@
 									"required": true
 								},
 								"body": {
-									"type": "string",
-									"required": true
+									"type": "string"
 								},
 								"keywords": {
-									"type": "string",
-									"required": true
+									"type": "string"
 								},
 								"status": {
 									"type": "string",
-									"required": true,
-									"enum":["Author", "Editor"]
+									"enum":["Submitted", "Pending"]
 								},
 								"createdBy": {
 									"type": "string",
 									"description": "Id of author",
-									"required": true
-								},
-								"approvedBy": {
-									"type": "string",
-									"description": "Id of editor",
 									"required": true
 								}
 							}
@@ -51,37 +44,105 @@
 			}
 		},
 
-		"/v1/Articles/getarticle": {
+		"/v1/Artical/{id}": {
 			"get": {
 				"x-swagger-router-controller": "Articles",
-				"operationId": "get-Articles",
+				"operationId": "get-Articles--by-id",
 				"tags": ["Articles"],
-				"description": "Get Articles API",
+				"description": "Get Articles By Id API",
 				"parameters": [
 					{
-						"name": "articleId",
-						"in": "query",
+					  "name": "id",
+					  "in": "path",
+					  "type": "string",
+					  "required": false
+					}
+				],
+				"responses": {}
+			},
+			"put": {
+				"x-swagger-router-controller": "Articles",
+				"operationId": "update-Articles-id",
+				"tags": ["Articles"],
+				"description": "update Articles by id API",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
 						"type": "string",
 						"required": false
 					},
 					{
-						"name": "createdBy",
-						"in": "query",
-						"type": "string",
-						"required": false
-					},
+						"name": "articleObject",
+						"in": "body",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"title": {
+									"type": "string"
+								},
+								"body": {
+									"type": "string"
+								},
+								"keywords": {
+									"type": "string"
+								},
+								"status": {
+									"type": "string",
+									"required": true,
+									"enum":["Submitted", "Pending"]
+								},
+								"updatedBy": {
+									"type": "string",
+									"description": "Id of author",
+									"required": true
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+		},
+
+		"/v1/Articals": {
+			"get": {
+				"x-swagger-router-controller": "Articles",
+				"operationId": "get-all-Articles",
+				"tags": ["Articles"],
+				"description": "Get All Articles API",
+				"parameters": [
+				],
+				"responses": {}
+			},
+			"put": {
+				"x-swagger-router-controller": "Articles",
+				"operationId": "approve-Articles",
+				"tags": ["Articles"],
+				"description": "Approve Reject article API",
+				"parameters": [
 					{
-						"name": "approvedBy",
-						"in": "query",
-						"type": "string",
-						"required": false
-					},
-					{
-						"name": "status",
-						"in": "query",
-						"type": "string",
-						"required": false,
-						"enum": ["Approved", "Rejected", "Submitted", "Pending"]
+						"name": "articleObject",
+						"in": "body",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"articalId": {
+									"type": "string",
+									"required": true
+								},
+								"status": {
+									"type": "string",
+									"required": true,
+									"enum":["Approved", "Rejected"]
+								},
+								"approvedBy": {
+									"type": "string",
+									"description": "Id of author",
+									"required": true
+								}
+							}
+						}
 					}
 				],
 				"responses": {}
