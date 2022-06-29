@@ -1,0 +1,66 @@
+{
+    "tags": {
+      "name": "Users",
+      "description": "List of APIS for users"
+    },
+    "paths": {
+      "/v1/users": {
+        "post": {
+          "x-swagger-router-controller": "user",
+          "operationId": "create-user",
+          "tags": ["Users"],
+          "description": "create User API",
+          "parameters": [
+            {
+							"in": "body",
+							"schema": {
+								"type": "object",
+								"properties": {
+									"name": {
+										"type": "string",
+										"required": true
+									},
+									"email": {
+										"type": "string",
+										"required": true
+									},
+									"type": {
+										"type": "string",
+										"required": true,
+										"enum":["Author", "Editor"]
+									}
+								}
+							}
+            }
+          ],
+          "responses": {}
+        }
+      },
+  
+      "/v1/users/getUser": {
+        "get": {
+          "x-swagger-router-controller": "user",
+          "operationId": "get-user",
+          "tags": ["Users"],
+          "description": "Get User API",
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "query",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "userType",
+              "in": "query",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "responses": {}
+        }
+      }
+
+    }
+  }
+  
