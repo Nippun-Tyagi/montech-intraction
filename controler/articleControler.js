@@ -69,7 +69,6 @@ exports.updateArtical = catchAsyncError(async (req, res, next) => {
     
 });
 
-
 exports.ApproveStatus = catchAsyncError(async (req, res, next) => {
     const newArticalData = {
         status: req.body.status,
