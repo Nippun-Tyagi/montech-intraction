@@ -15,7 +15,7 @@ const articlesSchemas = new mongoose.Schema(
     status:{
       type: String,
       enum: ["Approved", "Rejected", "Submitted", "Pending"],
-      default: "pending"
+      default: "Pending"
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
@@ -25,7 +25,7 @@ const articlesSchemas = new mongoose.Schema(
     approvedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
-      required: true,
+      // required: true,
     },
   },
   { timestamps: true }
