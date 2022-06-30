@@ -4,11 +4,13 @@ const ErrorHandler = require("../utils/errorHandler");
 
 exports.User = catchAsyncError(async (req, res, next) => {
   const { name, email, type } = req.body;
+  console.log(name)
   const user = await User.create({
     name,
     email,
     type,
   });
+  console.log(user);
   return res.status(200).json({
     success: true,
     user,

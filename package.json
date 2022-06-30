@@ -2,11 +2,11 @@
   "name": "workFlow",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "env-cmd ./config/test.env jest",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "env-cmd /config/config.env nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +16,16 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.4.1",
-    "validator": "^13.7.0",
-    "swagger-ui-express": "^4.4.0"
+    "swagger-ui-express": "^4.4.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
+    "env-cmd": "^8.0.2",
     "jest": "^28.1.2",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "supertest": "^6.2.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }

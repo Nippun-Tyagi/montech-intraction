@@ -7,7 +7,7 @@ module.exports = function (app) {
 
   switch (process.env.APPLICATION_ENV) {
     case "local":
-      swaggerDocument.host = `localhost:${config.port}`;
+      swaggerDocument.host = `localhost:${process.env.port}`;
       break;
     case "development":
       swaggerDocument.host = `${process.env.API_HOST}`;

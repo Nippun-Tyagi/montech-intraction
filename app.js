@@ -2,10 +2,8 @@ const express = require("express")
 const errorMiddleWare = require("./middleware/Error")
 const app = express();
 app.use(express.json())
-
-
-// Swagger setup
-require('./swagger/swagger.js')(app);
+const connectDatabase = require("./config/Database")
+connectDatabase()
 
 // router 
 const user = require("./router/userRouter")
